@@ -11,9 +11,10 @@ import java.util.List;
 
 @Repository
 public interface AgencyRepository extends JpaRepository<Agency,Long> {
-    @Query(value = "SELECT a FROM Agency a WHERE a.name = ?1 OR a.country = ?1 OR a.email = ?1")
-    List<Agency> searchAgency(String word);
+    @Query(value ="select h from Agency a join a.houses h ")
+    List<House> getAllHousesToAgency();
 
-    @Query(value = "SELECT h FROM House h WHERE h.agency.id = :agencyId")
-    List<House> getAllHousesToAgency(@Param("agencyId") Long agencyId);
+    @Query(value = "SELECT a FROM Agency a WHERE a.name ilike :word " + "OR a.country ilike :word " + "OR a.email ilike :word")
+    List<Agency> searchAgency(@Param("word")String word);
+
 }

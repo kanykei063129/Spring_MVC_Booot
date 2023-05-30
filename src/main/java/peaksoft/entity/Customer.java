@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
 import peaksoft.enums.Gender;
 
 import java.time.LocalDate;
@@ -28,9 +29,9 @@ public class Customer {
     private Gender gender;
     private String phoneNumber;
     private LocalDate dateOfBirth;
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH})
     private List<Agency> agencies;
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.DETACH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
     private List<Booking> booking;
 
     public Customer(String firstName, String lastName, String email, Gender gender, String phoneNumber, LocalDate dateOfBirth, List<Agency> agencies, List<Booking> booking) {

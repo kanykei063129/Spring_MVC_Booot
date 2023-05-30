@@ -15,13 +15,19 @@ public class AgencyApi {
     @GetMapping
     public String getAllAgencies(Model model) {
         model.addAttribute("agencies", agencyService.getAllAgencies());
-        return "agency";
+        return "agency/agency";
+    }
+
+    @GetMapping("/{id}")
+    public String getById(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("agency", agencyService.getAgencyById(id));
+        return "agency/agencyPage";
     }
 
     @GetMapping("/new")
     public String createAgency(Model model) {
         model.addAttribute("newAgency", new Agency());
-        return "newAgency";
+        return "agency/newAgency";
     }
 
     @PostMapping("/save")
@@ -30,28 +36,33 @@ public class AgencyApi {
         return "redirect:/agencies";
     }
 
-    @GetMapping("/{id}/getAgency")
-    public String getAgencyToUpdateById(@PathVariable Long id, Model model) {
-        model.addAttribute("agency", agencyService.getAgencyById(id));
-        return "updateAgency";
+    @GetMapping("/{id}/edit")
+    public String updateAgency(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editAgency", agencyService.getAgencyById(id));
+        return "agency/updateAgency";
     }
 
-//    @GetMapping("/{email}/getAgency")
-//    public String getAgencyToUpdateByEmail(@PathVariable String email, Model model){
-//        model.addAttribute("user",userService.getUserByEmail(email));
-//        return "updateAgency";
-//    }
-
-    @PostMapping("/{id}/update")
-    public String updateAgency(@PathVariable("id") Long id,
-                             @ModelAttribute("agency") Agency agency) {
+    @PostMapping("/updateAgency/{id}")
+    public String saveUpdate(@ModelAttribute("editAgency") Agency agency, @PathVariable("id") Long id) {
         agencyService.updateAgency(id, agency);
         return "redirect:/agencies";
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteAgency(@PathVariable Long id) {
+    public String deleteAgency(@PathVariable("id") Long id) {
         agencyService.deleteAgencyById(id);
         return "redirect:/agencies";
+    }
+
+    @GetMapping("/info")
+    public String getAllAgencyHouse(Model model) {
+        model.addAttribute("agencyHouse", agencyService.getAllHousesToAgency());
+        return "agency/agencyInfo";
+    }
+
+    @GetMapping("/search")
+    public String searchAgency(@RequestParam("word") String word, Model model) {
+        model.addAttribute("agencies", agencyService.searchAgency(word));
+        return "agency/searchAgency";
     }
 }

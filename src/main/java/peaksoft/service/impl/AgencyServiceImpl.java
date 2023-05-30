@@ -34,13 +34,12 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public void updateAgency(Long id, Agency newAgency) {
-        Agency agency = agencyRepository.findById(id)
-                .orElseThrow(() -> new NullPointerException("Agency with id: " + id + " is not found"));
+        Agency agency = agencyRepository.findById(id).orElseThrow(() -> new NullPointerException("Agency with id: " + id + " is not found"));
         agency.setName(newAgency.getName());
+        agency.setImageLink(newAgency.getImageLink());
         agency.setCountry(newAgency.getCountry());
+        agency.setEmail(newAgency.getEmail());
         agency.setPhoneNumber(newAgency.getPhoneNumber());
-        agency.setEmail(agency.getEmail());
-        agency.setImageLink(agency.getImageLink());
         agencyRepository.save(agency);
     }
 
@@ -58,7 +57,7 @@ public class AgencyServiceImpl implements AgencyService {
     }
 
     @Override
-    public List<House> getAllHousesToAgency(Long agencyId) {
-        return agencyRepository.getAllHousesToAgency(agencyId);
+    public List<House> getAllHousesToAgency() {
+        return agencyRepository.getAllHousesToAgency();
     }
 }

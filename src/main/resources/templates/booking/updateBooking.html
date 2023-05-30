@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Update booking</title>
+</head>
+<body>
+<form method="POST" th:action="@{/bookings/saveUpdate/{id}(id=${id})}" th:object="${booking}" >
+    <label for="houseId">House:</label>
+    <select id="houseId" name="houseName">
+        <option th:each="house : ${houses}" th:value="${house.getId()}" th:text="${house.houseType}"></option>
+    </select>
+
+    <label for="customerId">Customer:</label>
+    <select id="customerId" name="customerName" >
+        <option th:each="customer : ${customers}" th:value="${customer.getId()}" th:text="${customer.firstName}"></option>
+    </select>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+
+</html>

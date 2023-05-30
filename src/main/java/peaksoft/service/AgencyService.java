@@ -12,5 +12,5 @@ public interface AgencyService {
     void updateAgency(Long id, Agency newAgency);
     void deleteAgencyById(Long id);
     List<Agency> searchAgency(String word);
-    List<House> getAllHousesToAgency(Long agencyId);
+    List<House> getAllHousesToAgency();
 }
