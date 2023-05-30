@@ -26,6 +26,7 @@ public class Customer {
     private String lastName;
     @Column(unique = true)
     private String email;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String phoneNumber;
     private LocalDate dateOfBirth;

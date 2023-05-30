@@ -63,7 +63,8 @@ public class CustomerServiceImpl implements CustomerService {
 
             customer.getAgencies().add(agency);
             agency.getCustomers().add(customer);
-            customerRepository.save(customer);
-            agencyRepository.save(agency);
+
+//            customerRepository.save(customer);
+//            agencyRepository.save(agency);
         }
     }

@@ -13,20 +13,18 @@
         <div class="container">
 
             <ul class="menu menu_active">
-                <li class="menu_item"><a href="/index" class="menu_link">Main</a></li>
                 <li class="menu_item"><a href="/agencies" class="menu_link"> Agency</a></li>
                 <li class="menu_item"><a href="/customers" class="menu_link">  Customer </a></li>
                 <li class="menu_item"><a href="/houses" class="menu_link"> House  </a></li>
-                <li class="menu_item"><a href="#" class="menu_link"> Booking </a></li>
-                <li class="menu_item"><a href="#" class="menu_link"> Services</a></li>
+                <li class="menu_item"><a href="/bookings" class="menu_link"> Booking </a></li>
             </ul>
 
         </div>
-        <div class="hamburger hamburger_active">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+<!--        <div class="hamburger hamburger_active">-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--        </div>-->
     </nav>
 </header>
 <section class="promo">
@@ -43,15 +41,15 @@
                 <div class="bax-all">
                     <div class="box-agency">
                         <div class="card-agency" style="width: 18rem;" th:each="agency:${agencies}" >
-                            <img th:src="${agency.getImage()}" class="card-img-top" alt="Agency's image">
+                            <img th:src="${agency.getImageLink()}" class="card-img-top" alt="Agency's image">
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${agency.getName()}">Agency</h5>
                                 <h6 class="card-title" th:text="${agency.getCountry()}">Country</h6>
                                 <h6 class="card-title" th:text="${agency.getEmail()}">Email</h6>
                                 <h6 class="card-title" th:text="${agency.getPhoneNumber()}">Phone number</h6>
                             </div>
-                            <ul class="list-group list-group-flush">
-                            </ul>
+<!--                            <ul class="list-group list-group-flush">-->
+<!--                            </ul>-->
                             <div class="card-body">
                                 <a th:href="@{/agencies/info(id=${agency.getId()})}"  class="card-link">Info</a>
                                 <a th:href="@{/agencies/{id}/edit (id=${agency.getId()})}" class="card-link">Update</a>

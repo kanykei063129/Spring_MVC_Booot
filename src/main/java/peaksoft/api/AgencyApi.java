@@ -10,6 +10,7 @@ import peaksoft.service.AgencyService;
 @RequestMapping("/agencies")
 @RequiredArgsConstructor
 public class AgencyApi {
+
     private final AgencyService agencyService;
 
     @GetMapping

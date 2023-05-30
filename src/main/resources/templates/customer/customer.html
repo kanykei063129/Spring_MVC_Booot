@@ -16,24 +16,12 @@
                 <li class="menu_item"><a href="/agencies" class="menu_link"> Agency</a></li>
                 <li class="menu_item"><a href="/customers" class="menu_link">  Customer </a></li>
                 <li class="menu_item"><a href="/houses" class="menu_link"> House  </a></li>
-                <li class="menu_item"><a href="#" class="menu_link"> Booking </a></li>
+                <li class="menu_item"><a href="/bookings" class="menu_link"> Booking </a></li>
             </ul>
 
         </div>
-        <div class="hamburger hamburger_active">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
 </header>
-<section class="promo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 offset-md-0 coll-lg-10
-                offset- coll-lg-10">
-                <div class="bax-all">
-                    <div class="box-agency">
                         <div class="card-agency" style="width: 18rem;" th:each="customer:${customers}" >
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${customer.getFirstName()}">First name</h5>
@@ -46,19 +34,15 @@
                             <div class="card-body">
                                 <a th:href="@{/customers/{id} (id=${customer.getId()})}"  class="card-link">Info</a>
                                 <a th:href="@{/customers/{id}/edit (id=${customer.getId()})}" class="card-link">Update</a>
+
                                 <a th:href="@{/customers/assign/{id}(id=${customer.getId()})}" class="card-link">Assign</a>
+
                                 <form th:method="GET" th:action="@{/customers/{id}/delete (id=${customer.getId()})}" >
                                     <input type="submit" th:value="Delete">
                                 </form>
                             </div>
                         </div>
-                    </div>
                     <a href="/customers/newCustomer">Create new customer</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

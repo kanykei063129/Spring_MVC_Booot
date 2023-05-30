@@ -23,6 +23,11 @@ public class BookingApi {
         model.addAttribute("bookings", bookingService.getAllBooking());
         return "booking/booking";
     }
+//    @GetMapping("/{id}")
+//    public String getById(@PathVariable("id") Long id, Model model) {
+//        model.addAttribute("booking", bookingService.getBookingById(id));
+//        return "booking/bookingPage";
+//    }
     @GetMapping("/newBookings")
     public String createHouse(Model model) {
         model.addAttribute("newBooking", new Booking());

@@ -9,7 +9,7 @@
     <div class="mb-3">
         <label for="agencyName" class="form-label">Select agency</label>
         <select class="form-select" id="agencyName" name="agencyName" required>
-            <option value="">Choose...</option>
+            <option value="">Click_one_of_them</option>
             <option th:each="agency1 : ${agency}" th:value="${agency1.getId()}" th:text="${agency1.name}"></option>
         </select>
     </div>

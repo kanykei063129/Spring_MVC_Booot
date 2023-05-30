@@ -11,33 +11,19 @@
 <header>
     <nav>
         <div class="container">
-
             <ul class="menu menu_active">
                 <li class="menu_item"><a href="/agencies" class="menu_link"> Agency</a></li>
                 <li class="menu_item"><a href="/customers" class="menu_link">  Customer </a></li>
                 <li class="menu_item"><a href="/houses" class="menu_link"> House  </a></li>
-                <li class="menu_item"><a href="#" class="menu_link"> Booking </a></li>
+                <li class="menu_item"><a href="/bookings" class="menu_link"> Booking </a></li>
             </ul>
-
-        </div>
-        <div class="hamburger hamburger_active">
-            <span></span>
-            <span></span>
-            <span></span>
         </div>
     </nav>
 </header>
-<section class="promo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 offset-md-0 coll-lg-10
-                offset- coll-lg-10">
-                <div class="searching" >
                     <form th:action="@{agencies/search}" method="GET">
                         <input type="text" name="word" placeholder="Enter a word">
                         <button type="submit">Search</button>
                     </form>
-                </div>
                 <div class="bax-all">
                     <div class="box-agency">
                         <div class="card-agency" style="width: 18rem;" th:each="agency:${agencies}" >
@@ -48,11 +34,8 @@
                                 <h6 class="card-title" th:text="${agency.getEmail()}">Email</h6>
                                 <h6 class="card-title" th:text="${agency.getPhoneNumber()}">Phone number</h6>
                             </div>
-                            <ul class="list-group list-group-flush">
-                            </ul>
                             <div class="card-body">
                                 <a th:href="@{/agencies/{id} (id=${agency.getId()})}" class="btn btn-primary">Info</a>
-<!--                                <a th:href="@{/agencies/info(id=${agency.getId()})}"  class="card-link">Info</a>-->
                                 <a th:href="@{/agencies/{id}/edit (id=${agency.getId()})}" class="card-link">Update</a>
                                 <form th:method="GET" th:action="@{/agencies/{id}/delete(id=${agency.getId()})}" >
                                     <input type="submit" th:value="Delete">
@@ -62,10 +45,6 @@
                     </div>
                     <a href="/agencies/new">Create new agency</a>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
